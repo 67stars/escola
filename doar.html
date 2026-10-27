@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doação – AdotZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Adot<span>Z</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="adocao">Adoção</a></li>
+        <li><a href="comunidade">Comunidade</a></li>
+        <li><a href="doar" class="ativo">Doação</a></li>
+        <li><a href="suporte">Suporte</a></li>
+      </ul>
+      <a href="perfil" class="nav-perfil-icon" title="Meu Perfil">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <section class="secao">
+    <h2 class="secao-titulo">Doação</h2>
+    <p class="secao-sub">Sua contribuição transforma vidas! Veja como ajudar.</p>
+    <div class="linha-verde"></div>
+
+    <!-- HERO DOAÇÃO -->
+    <div class="doacao-hero">
+      <h2>Faça a diferença hoje 💚</h2>
+      <p>Cada doação ajuda a alimentar, vacinar e cuidar de animais que aguardam por um lar. 100% do valor vai diretamente para as ONGs parceiras.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primario" onclick="mostrarFormDoacao(10)">R$ 10</button>
+        <button class="btn btn-primario" onclick="mostrarFormDoacao(25)">R$ 25</button>
+        <button class="btn btn-primario" onclick="mostrarFormDoacao(50)">R$ 50</button>
+        <button class="btn btn-primario" onclick="mostrarFormDoacao(100)">R$ 100</button>
+        <button class="btn btn-secundario" onclick="mostrarFormDoacao('outro')">Outro valor</button>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO DE DOAÇÃO (oculto por padrão) -->
+    <div id="form-doacao" style="display:none;" class="form-contato" style="margin-bottom:2rem;">
+      <h3 style="color:var(--verde);margin-bottom:0.5rem;">Confirmar doação</h3>
+      <p style="color:var(--texto-claro);margin-bottom:1.5rem;" id="texto-valor-doacao">Você escolheu doar R$ 25,00</p>
+      <div class="form-grupo">
+        <label>Valor da doação (R$)</label>
+        <input type="number" id="input-valor-doacao" placeholder="Ex: 25" min="1">
+      </div>
+      <div class="form-grupo">
+        <label>Seu nome</label>
+        <input type="text" placeholder="Como deseja aparecer na lista de doadores?">
+      </div>
+      <div class="form-grupo">
+        <label>Escolha a ONG beneficiada</label>
+        <select>
+          <option>ONG Amigos dos Animais de BH</option>
+          <option>Instituto Pet Brasil</option>
+          <option>Lar Animal Divinópolis</option>
+          <option>Protetores Unidos MG</option>
+        </select>
+      </div>
+      <div class="form-grupo">
+        <label>Forma de pagamento</label>
+        <select>
+          <option>PIX</option>
+          <option>Cartão de crédito</option>
+          <option>Boleto bancário</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:1rem;">
+        <button class="btn btn-primario" onclick="confirmarDoacao()">Confirmar doação 💚</button>
+        <button class="btn btn-secundario" style="color:var(--verde);border-color:var(--verde);" onclick="document.getElementById('form-doacao').style.display='none'">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- ONGS PARCEIRAS -->
+    <h3 class="secao-titulo" style="margin-bottom:0.5rem;">ONGs que ajudamos</h3>
+    <p class="secao-sub">Instituições verificadas que recebem as doações.</p>
+    <div class="linha-verde"></div>
+
+    <div class="grid-2" style="margin-bottom:3rem;">
+      <div class="ong-card">
+        <div class="ong-icone">🐾</div>
+        <div>
+          <div class="ong-nome">ONG Amigos dos Animais de BH</div>
+          <div class="ong-desc">Atua há 12 anos resgatando, cuidando e intermediando adoções em Belo Horizonte e região metropolitana.</div>
+          <span class="tag" style="display:inline-block;">🏆 23 adoções este mês</span>
+        </div>
+      </div>
+      <div class="ong-card">
+        <div class="ong-icone">🌿</div>
+        <div>
+          <div class="ong-nome">Instituto Pet Brasil</div>
+          <div class="ong-desc">Focado em políticas públicas para animais e campanhas de castração gratuita em todo o estado de MG.</div>
+          <span class="tag" style="display:inline-block;">💉 130 castrações/mês</span>
+        </div>
+      </div>
+      <div class="ong-card">
+        <div class="ong-icone">🏠</div>
+        <div>
+          <div class="ong-nome">Lar Animal Divinópolis</div>
+          <div class="ong-desc">Abrigo localizado em Divinópolis que cuida de mais de 80 animais simultaneamente com dedicação e amor.</div>
+          <span class="tag" style="display:inline-block;">🐕 80+ animais abrigados</span>
+        </div>
+      </div>
+      <div class="ong-card">
+        <div class="ong-icone">🤝</div>
+        <div>
+          <div class="ong-nome">Protetores Unidos MG</div>
+          <div class="ong-desc">Rede de protetores independentes que atuam em cidades do interior de Minas Gerais.</div>
+          <span class="tag" style="display:inline-block;">👥 200+ protetores</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESTAÇÃO DE CONTAS -->
+    <h3 class="secao-titulo" style="margin-bottom:0.5rem;">Prestação de contas</h3>
+    <p class="secao-sub">Transparência total. Veja como as doações foram utilizadas.</p>
+    <div class="linha-verde"></div>
+
+    <div class="contas-card">
+      <div class="contas-mes">Mai<br>2026</div>
+      <div style="flex:1;">
+        <div class="contas-valor">R$ 4.820,00</div>
+        <div class="contas-desc">arrecadados · 47 castrações · 23 adoções intermediadas</div>
+        <div class="barra-progresso"><div class="barra-fill" style="width:96%"></div></div>
+      </div>
+      <div style="text-align:right;">
+        <div class="tag tag-azul">96% utilizado</div>
+      </div>
+    </div>
+
+    <div class="contas-card">
+      <div class="contas-mes">Abr<br>2026</div>
+      <div style="flex:1;">
+        <div class="contas-valor">R$ 3.540,00</div>
+        <div class="contas-desc">arrecadados · 35 castrações · 18 adoções intermediadas</div>
+        <div class="barra-progresso"><div class="barra-fill" style="width:100%"></div></div>
+      </div>
+      <div style="text-align:right;">
+        <div class="tag tag-azul">100% utilizado</div>
+      </div>
+    </div>
+
+    <div class="contas-card">
+      <div class="contas-mes">Mar<br>2026</div>
+      <div style="flex:1;">
+        <div class="contas-valor">R$ 2.910,00</div>
+        <div class="contas-desc">arrecadados · 28 castrações · 15 adoções intermediadas</div>
+        <div class="barra-progresso"><div class="barra-fill" style="width:100%"></div></div>
+      </div>
+      <div style="text-align:right;">
+        <div class="tag tag-azul">100% utilizado</div>
+      </div>
+    </div>
+
+    <!-- PRINCIPAIS DOADORES -->
+    <h3 class="secao-titulo" style="margin-top:3rem;margin-bottom:0.5rem;">Principais doadores</h3>
+    <p class="secao-sub">Heróis que fazem a diferença todo mês. Muito obrigado! 💚</p>
+    <div class="linha-verde"></div>
+
+    <div class="doadores-lista">
+      <div class="doador-item">
+        <div class="doador-pos ouro">1</div>
+        <div class="doador-nome">🏆 Ana Paula M.</div>
+        <div class="doador-valor">R$ 350,00</div>
+      </div>
+      <div class="doador-item">
+        <div class="doador-pos prata">2</div>
+        <div class="doador-nome">Carlos Eduardo S.</div>
+        <div class="doador-valor">R$ 280,00</div>
+      </div>
+      <div class="doador-item">
+        <div class="doador-pos bronze">3</div>
+        <div class="doador-nome">Família Oliveira</div>
+        <div class="doador-valor">R$ 200,00</div>
+      </div>
+      <div class="doador-item">
+        <div class="doador-pos">4</div>
+        <div class="doador-nome">Mariana T.</div>
+        <div class="doador-valor">R$ 150,00</div>
+      </div>
+      <div class="doador-item">
+        <div class="doador-pos">5</div>
+        <div class="doador-nome">Empresa XYZ Ltda.</div>
+        <div class="doador-valor">R$ 120,00</div>
+      </div>
+      <div class="doador-item">
+        <div class="doador-pos">6</div>
+        <div class="doador-nome">Roberto A.</div>
+        <div class="doador-valor">R$ 100,00</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Adot<span>Z</span></div>
+          <p class="footer-desc">Conectando animais a lares cheios de amor. Um projeto do CEFET-MG.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="/">Início</a>
+          <a href="adocao">Adoção</a>
+          <a href="comunidade">Comunidade</a>
+          <a href="doar">Doação</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="index.html#quemsomos">Quem somos</a>
+          <a href="suporte">Contato</a>
+          <a href="suporte">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AdotZ · CEFET-MG · Feito com 🐾 por Miguel, Rui e Lucas
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function mostrarFormDoacao(valor) {
+      document.getElementById('form-doacao').style.display = 'block';
+      if (valor === 'outro') {
+        document.getElementById('texto-valor-doacao').textContent = 'Digite o valor que deseja doar:';
+        document.getElementById('input-valor-doacao').value = '';
+      } else {
+        document.getElementById('texto-valor-doacao').textContent = `Você escolheu doar R$ ${valor},00`;
+        document.getElementById('input-valor-doacao').value = valor;
+      }
+      document.getElementById('form-doacao').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function confirmarDoacao() {
+      alert('Obrigado pela sua doação! 💚🐾\nEm breve você receberá um e-mail de confirmação.');
+      document.getElementById('form-doacao').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

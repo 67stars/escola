@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suporte – AdotZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Adot<span>Z</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="adocao">Adoção</a></li>
+        <li><a href="comunidade">Comunidade</a></li>
+        <li><a href="doar">Doação</a></li>
+        <li><a href="suporte" class="ativo">Suporte</a></li>
+      </ul>
+      <a href="perfil" class="nav-perfil-icon" title="Meu Perfil">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <section class="secao">
+    <h2 class="secao-titulo">Suporte</h2>
+    <p class="secao-sub">Estamos aqui para ajudar! Abertos a dúvidas, críticas, elogios e sugestões.</p>
+    <div class="linha-verde"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="suporte-grid">
+
+      <!-- PERGUNTAS FREQUENTES -->
+      <div>
+        <h3 style="color:var(--verde);margin-bottom:1.25rem;font-size:1.2rem;">Dúvidas frequentes</h3>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            Como funciona o processo de adoção? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            O processo é simples: você encontra um animal na página de <strong>Adoção</strong>, clica em "Quero adotar" e preenche o formulário. Nossa equipe entra em contato em até 48 horas para verificar o perfil e agendar uma visita ao abrigo.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            A adoção pelo AdotZ é gratuita? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Sim! A intermediação pelo AdotZ é totalmente gratuita. Alguns abrigos podem cobrar uma taxa simbólica para cobrir custos de vacinação e castração, mas isso é informado antes da adoção.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            Posso anunciar um animal para adoção? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Por enquanto, apenas ONGs e abrigos parceiros verificados podem anunciar animais. Se você é protetor independente e tem interesse em parceria, entre em contato pelo formulário abaixo!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            Como faço para verificar minha conta? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Após criar sua conta, acesse o perfil e clique em "Solicitar verificação". Você precisará enviar um documento com foto. O prazo de análise é de 3 a 5 dias úteis.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            As doações são seguras? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Sim! Utilizamos gateways de pagamento certificados (PCI-DSS). Todas as doações vão diretamente para as ONGs parceiras e publicamos a prestação de contas mensalmente na página de Doação.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            O que acontece se a adoção não der certo? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Pedimos que entre em contato conosco imediatamente. Nunca abandone o animal! Nossa equipe ajuda a mediar a situação e, se necessário, encontrar um novo lar responsável para o pet.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-pergunta" onclick="toggleFaq(this)">
+            Posso visitar o abrigo antes de adotar? <span class="faq-seta">▼</span>
+          </div>
+          <div class="faq-resposta">
+            Sim! Isso é muito recomendado. Entre em contato com a ONG responsável pelo animal através do botão "Conversar com o abrigo" na página do animal. Eles agendarão uma visita com prazer.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FORMULÁRIO DE CONTATO -->
+       <form action="/contato_suporte/save" method="POST">
+      <div>
+        <h3 style="color:var(--verde);margin-bottom:1.25rem;font-size:1.2rem;">Entre em contato</h3>
+        <div class="form-contato">
+          <div class="form-grupo">
+            <label for="c-nome">Seu nome</label>
+            <input type="text" id="c-nome" placeholder="João Silva">
+          </div>
+          <div class="form-grupo">
+            <label for="c-email">E-mail</label>
+            <input type="email" id="c-email" placeholder="joao@email.com">
+          </div>
+          <div class="form-grupo">
+            <label for="c-tipo">Tipo de mensagem</label>
+            <select id="c-tipo">
+              <option value="duvida_tipo">Dúvida sobre doação</option>
+              <option value="reclamacao_tipo">Reclamação</option>
+              <option value="elogio_tipo">Elogio</option>
+              <option value="sugestao_tipo">Sugestão</option>
+              <option value="parceria_tipo">Parceria (ONG/Protetor)</option>
+              <option value="outro_tipo">Outro</option>
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label for="c-msg">Mensagem</label>
+            <textarea id="c-msg" rows="5" placeholder="Escreva sua mensagem aqui..."></textarea>
+          </div>
+          <button class="btn btn-primario" style="width:100%;">Enviar mensagem 📨</button>
+        </div>
+      </form>
+
+        <!-- CANAL DE MENSAGENS RÁPIDAS -->
+        <div style="margin-top:1.5rem;">
+          <h3 style="color:var(--verde);margin-bottom:1rem;font-size:1.1rem;">Mensagens diretas</h3>
+          <div class="chat-container" style="height:auto;">
+            <div class="chat-lista" style="max-height:260px;">
+              <div class="chat-item ativo">
+                <div class="chat-avatar">🏠</div>
+                <div>
+                  <div class="chat-nome">Equipe AdotZ</div>
+                  <div class="chat-preview">Olá! Como podemos ajudar?</div>
+                </div>
+              </div>
+              <div class="chat-item">
+                <div class="chat-avatar">🐾</div>
+                <div>
+                  <div class="chat-nome">Lar Animal Divinópolis</div>
+                  <div class="chat-preview">Visita agendada para sexta!</div>
+                </div>
+              </div>
+              <div class="chat-item">
+                <div class="chat-avatar">🌿</div>
+                <div>
+                  <div class="chat-nome">Instituto Pet Brasil</div>
+                  <div class="chat-preview">Castração gratuita disponível</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-janela" style="margin-top:1rem;border-radius:16px;box-shadow:0 2px 12px var(--sombra);">
+            <div class="chat-header">
+              <div class="chat-avatar">🏠</div>
+              <div>
+                <div style="font-weight:700;color:var(--verde);">Equipe AdotZ</div>
+                <div style="font-size:0.82rem;color:var(--texto-claro);">Geralmente responde em minutos</div>
+              </div>
+            </div>
+            <div class="chat-mensagens" style="max-height:180px;" id="chat-msgs">
+              <div class="msg msg-recebida">Olá! 👋 Seja bem-vindo ao suporte do AdotZ. Como posso ajudar?</div>
+              <div class="msg msg-recebida">Você pode perguntar sobre adoção, doação, verificação de conta ou qualquer dúvida que tiver! 🐾</div>
+            </div>
+            <div class="chat-input">
+              <input type="text" id="msg-input" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')enviarMsg()">
+              <button class="chat-enviar" onclick="enviarMsg()">➤</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Adot<span>Z</span></div>
+          <p class="footer-desc">Conectando animais a lares cheios de amor. Um projeto do CEFET-MG.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="index">Início</a>
+          <a href="adocao">Adoção</a>
+          <a href="comunidade">Comunidade</a>
+          <a href="doar">Doação</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="index.html#quemsomos">Quem somos</a>
+          <a href="suporte">Contato</a>
+          <a href="suporte">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AdotZ · CEFET-MG · Feito com 🐾 por Miguel, Rui e Lucas
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @media(max-width:768px){ .suporte-grid{ grid-template-columns:1fr!important; } }
+  </style>
+
+  <script>
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('aberto');
+    }
+
+    function enviarMsg() {
+      const input = document.getElementById('msg-input');
+      const texto = input.value.trim();
+      if (!texto) return;
+      const msgs = document.getElementById('chat-msgs');
+      const m = document.createElement('div');
+      m.className = 'msg msg-enviada';
+      m.textContent = texto;
+      msgs.appendChild(m);
+      input.value = '';
+      msgs.scrollTop = msgs.scrollHeight;
+      setTimeout(() => {
+        const r = document.createElement('div');
+        r.className = 'msg msg-recebida';
+        r.textContent = 'Obrigado pela mensagem! Nossa equipe retornará em breve. 🐾';
+        msgs.appendChild(r);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Adoção – AdotZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Adot<span>Z</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="adocao">Adoção</a></li>
+        <li><a href="comunidade">Comunidade</a></li>
+        <li><a href="doar">Doação</a></li>
+        <li><a href="suporte">Suporte</a></li>
+      </ul>
+      <a href="perfil" class="nav-perfil-icon" title="Meu Perfil">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <section class="secao" style="max-width:700px;">
+    <a href="adocao" style="color:var(--verde);font-weight:600;text-decoration:none;display:inline-block;margin-bottom:1.5rem;">← Voltar para adoção</a>
+
+    <h2 class="secao-titulo">Formulário de Adoção 🐾</h2>
+    <p class="secao-sub">Preencha com cuidado. Vamos analisar e entrar em contato em até 48 horas!</p>
+    <div class="linha-verde"></div>
+
+    <div class="form-contato">
+
+      <h3 style="color:var(--verde);margin-bottom:1.25rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Dados pessoais</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-grupo">
+          <label>Nome completo *</label>
+          <input type="text" id="f-nome" placeholder="Seu nome completo">
+        </div>
+        <div class="form-grupo">
+          <label>CPF *</label>
+          <input type="text" placeholder="000.000.000-00">
+        </div>
+        <div class="form-grupo">
+          <label>E-mail *</label>
+          <input type="email" placeholder="seu@email.com">
+        </div>
+        <div class="form-grupo">
+          <label>Telefone *</label>
+          <input type="tel" placeholder="(37) 99999-9999">
+        </div>
+        <div class="form-grupo">
+          <label>Idade *</label>
+          <input type="number" placeholder="Ex: 28" min="18">
+        </div>
+        <div class="form-grupo">
+          <label>Cidade / Estado *</label>
+          <input type="text" placeholder="Divinópolis, MG">
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--cinza-medio);margin:1.5rem 0;">
+      <h3 style="color:var(--verde);margin-bottom:1.25rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Sobre sua moradia</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-grupo">
+          <label>Tipo de moradia *</label>
+          <select>
+            <option>Casa com quintal</option>
+            <option>Casa sem quintal</option>
+            <option>Apartamento</option>
+            <option>Sítio / Chácara</option>
+          </select>
+        </div>
+        <div class="form-grupo">
+          <label>Mora com outras pessoas? *</label>
+          <select>
+            <option>Sim, família</option>
+            <option>Sim, com amigos</option>
+            <option>Moro sozinho(a)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grupo">
+        <label>Há crianças em casa? Qual faixa etária?</label>
+        <input type="text" placeholder="Ex: Sim, 5 e 8 anos">
+      </div>
+
+      <div class="form-grupo">
+        <label>Já tem outros animais em casa?</label>
+        <input type="text" placeholder="Ex: Sim, um gato castrado">
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--cinza-medio);margin:1.5rem 0;">
+      <h3 style="color:var(--verde);margin-bottom:1.25rem;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Perguntas de segurança</h3>
+
+      <div class="form-grupo">
+        <label>Por que você quer adotar? *</label>
+        <textarea rows="3" placeholder="Conte sua motivação para adotar..."></textarea>
+      </div>
+
+      <div class="form-grupo">
+        <label>Você tem condições de arcar com custos veterinários? *</label>
+        <select>
+          <option>Sim, totalmente</option>
+          <option>Sim, parcialmente</option>
+          <option>Tenho dificuldades financeiras</option>
+        </select>
+      </div>
+
+      <div class="form-grupo">
+        <label>O que faria se não pudesse mais ficar com o animal? *</label>
+        <textarea rows="2" placeholder="Ex: Buscaria outro lar responsável com apoio da ONG"></textarea>
+      </div>
+
+      <div class="form-grupo">
+        <label>Captcha: quanto é 5 + 3? *</label>
+        <input type="text" id="f-captcha" placeholder="Resposta">
+      </div>
+
+      <button class="btn btn-primario" onclick="enviarFormulario()" style="width:100%;margin-top:0.5rem;font-size:1.1rem;padding:1rem;">
+        Enviar solicitação de adoção 🐾
+      </button>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Adot<span>Z</span></div>
+          <p class="footer-desc">Conectando animais a lares cheios de amor. Um projeto do CEFET-MG.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="/">Início</a>
+          <a href="adocao">Adoção</a>
+          <a href="comunidade">Comunidade</a>
+          <a href="doar">Doação</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="index.html#quemsomos">Quem somos</a>
+          <a href="suporte">Contato</a>
+          <a href="suporte">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AdotZ · CEFET-MG · Feito com 🐾 por Miguel, Rui e Lucas
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function enviarFormulario() {
+      const captcha = document.getElementById('f-captcha').value.trim();
+      const nome = document.getElementById('f-nome').value.trim();
+      if (!nome) { alert('Preencha seu nome!'); return; }
+      if (captcha !== '8') { alert('Resposta do captcha incorreta! (5 + 3 = ?)'); return; }
+      alert('Solicitação enviada com sucesso! 🐾\nEntraremos em contato em até 48 horas. Obrigado pelo seu interesse em adotar!');
+      window.location.href = 'adocao.html';
+    }
+  </script>
+
+</body>
+</html>

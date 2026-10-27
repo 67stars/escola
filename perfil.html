@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil – AdotZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Adot<span>Z</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="adocao">Adoção</a></li>
+        <li><a href="comunidade">Comunidade</a></li>
+        <li><a href="doar">Doação</a></li>
+        <li><a href="suporte">Suporte</a></li>
+      </ul>
+      <a href="perfil" class="nav-perfil-icon ativo" title="Meu Perfil" style="border:2px solid var(--vermelho);">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO DO PERFIL -->
+  <div class="perfil-usuario-hero">
+    <div class="perfil-avatar-grande">😊</div>
+    <div class="perfil-usuario-nome" id="perfil-nome">Meu Perfil</div>
+    <div class="perfil-usuario-bio" id="perfil-bio">Apaixonado(a) por animais 🐾</div>
+    <div class="perfil-stats">
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Adoções</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Doações</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Posts</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="secao">
+    <!-- ABAS -->
+    <div style="display:flex;gap:0.5rem;margin-bottom:2rem;border-bottom:2px solid var(--cinza-medio);padding-bottom:0;">
+      <button class="aba-btn aba-ativa" onclick="trocarAba('dados', this)">Meus dados</button>
+      <button class="aba-btn" onclick="trocarAba('mensagens', this)">Mensagens</button>
+      <button class="aba-btn" onclick="trocarAba('historico', this)">Histórico</button>
+    </div>
+
+    <!-- ABA: DADOS -->
+    <div id="aba-dados" class="aba-conteudo">
+      <div class="form-contato">
+        <h3 style="color:var(--verde);margin-bottom:1.25rem;">Informações do perfil</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-grupo">
+            <label>Nome completo</label>
+            <input type="text" id="inp-nome" placeholder="Seu nome">
+          </div>
+          <div class="form-grupo">
+            <label>Nome de usuário</label>
+            <input type="text" id="inp-usuario" placeholder="@usuario">
+          </div>
+          <div class="form-grupo">
+            <label>E-mail</label>
+            <input type="email" placeholder="seu@email.com">
+          </div>
+          <div class="form-grupo">
+            <label>Telefone</label>
+            <input type="tel" placeholder="(37) 99999-9999">
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label>Bio</label>
+          <input type="text" id="inp-bio" placeholder="Conte um pouco sobre você">
+        </div>
+        <div class="form-grupo">
+          <label>Cidade / Estado</label>
+          <input type="text" placeholder="Ex: Divinópolis, MG">
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:0.5rem;">
+          <button class="btn btn-primario" onclick="salvarPerfil()">Salvar alterações</button>
+          <button class="btn btn-secundario" style="color:var(--vermelho);border-color:var(--vermelho);" onclick="solicitarVerificacao()">Solicitar verificação ✓</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA: MENSAGENS -->
+    <div id="aba-mensagens" class="aba-conteudo" style="display:none;">
+      <div class="chat-container">
+        <div class="chat-lista">
+          <div class="chat-item ativo" onclick="selecionarChat(this, 'Lar Animal Divinópolis', '🏠')">
+            <div class="chat-avatar">🏠</div>
+            <div>
+              <div class="chat-nome">Lar Animal Divinópolis</div>
+              <div class="chat-preview">Olá! Tem interesse no Bolinha?</div>
+            </div>
+          </div>
+          <div class="chat-item" onclick="selecionarChat(this, 'ONG Amigos BH', '🐾')">
+            <div class="chat-avatar">🐾</div>
+            <div>
+              <div class="chat-nome">ONG Amigos BH</div>
+              <div class="chat-preview">Visita confirmada para sexta!</div>
+            </div>
+          </div>
+          <div class="chat-item" onclick="selecionarChat(this, 'Equipe AdotZ', '🌿')">
+            <div class="chat-avatar">🌿</div>
+            <div>
+              <div class="chat-nome">Equipe AdotZ</div>
+              <div class="chat-preview">Verificação aprovada! ✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-janela">
+          <div class="chat-header">
+            <div class="chat-avatar" id="chat-av">🏠</div>
+            <div>
+              <div style="font-weight:700;color:var(--verde);" id="chat-titulo">Lar Animal Divinópolis</div>
+              <div style="font-size:0.82rem;color:var(--texto-claro);">online</div>
+            </div>
+          </div>
+          <div class="chat-mensagens" id="chat-msgs-perfil">
+            <div class="msg msg-recebida">Olá! Vimos que você se interessou pelo Bolinha. Gostaria de agendar uma visita? 🐾</div>
+            <div class="msg msg-enviada">Olá! Sim, tenho muito interesse!</div>
+            <div class="msg msg-recebida">Que ótimo! Temos disponibilidade às sextas à tarde e sábados pela manhã. Qual prefere?</div>
+          </div>
+          <div class="chat-input">
+            <input type="text" id="chat-input-perfil" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')enviarMsgPerfil()">
+            <button class="chat-enviar" onclick="enviarMsgPerfil()">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA: HISTÓRICO -->
+    <div id="aba-historico" class="aba-conteudo" style="display:none;">
+      <div style="text-align:center;padding:3rem;color:var(--texto-claro);">
+        <div style="font-size:4rem;margin-bottom:1rem;">🐾</div>
+        <h3 style="color:var(--verde);margin-bottom:0.5rem;">Nenhuma adoção ainda</h3>
+        <p>Quando você adotar um animal, ele vai aparecer aqui!</p>
+        <a href="adocao" class="btn btn-primario" style="display:inline-block;margin-top:1.5rem;">Ver animais disponíveis →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Adot<span>Z</span></div>
+          <p class="footer-desc">Conectando animais a lares cheios de amor. Um projeto do CEFET-MG.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="/">Início</a>
+          <a href="adocao">Adoção</a>
+          <a href="comunidade">Comunidade</a>
+          <a href="doar">Doação</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="index.html#quemsomos">Quem somos</a>
+          <a href="suporte">Contato</a>
+          <a href="suporte">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AdotZ · CEFET-MG · Feito com 🐾 por Miguel, Rui e Lucas
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .aba-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--texto-claro);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .aba-btn:hover { color: var(--verde); }
+    .aba-ativa { color: var(--verde) !important; border-bottom-color: var(--verde) !important; }
+  </style>
+
+  <script>
+    function trocarAba(id, btn) {
+      document.querySelectorAll('.aba-conteudo').forEach(a => a.style.display = 'none');
+      document.querySelectorAll('.aba-btn').forEach(b => b.classList.remove('aba-ativa'));
+      document.getElementById('aba-' + id).style.display = 'block';
+      btn.classList.add('aba-ativa');
+    }
+
+    function salvarPerfil() {
+      const nome = document.getElementById('inp-nome').value.trim();
+      const bio = document.getElementById('inp-bio').value.trim();
+      if (nome) document.getElementById('perfil-nome').textContent = nome;
+      if (bio) document.getElementById('perfil-bio').textContent = bio;
+      alert('Perfil salvo com sucesso! ✓');
+    }
+
+    function solicitarVerificacao() {
+      alert('Solicitação de verificação enviada!\nPrazo de análise: 3 a 5 dias úteis.');
+    }
+
+    function enviarMsgPerfil() {
+      const input = document.getElementById('chat-input-perfil');
+      const texto = input.value.trim();
+      if (!texto) return;
+      const msgs = document.getElementById('chat-msgs-perfil');
+      const m = document.createElement('div');
+      m.className = 'msg msg-enviada fade-in';
+      m.textContent = texto;
+      msgs.appendChild(m);
+      input.value = '';
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function selecionarChat(item, nome, emoji) {
+      document.querySelectorAll('.chat-item').forEach(i => i.classList.remove('ativo'));
+      item.classList.add('ativo');
+      document.getElementById('chat-titulo').textContent = nome;
+      document.getElementById('chat-av').textContent = emoji;
+    }
+
+    // Verificar hash para ir direto para mensagens
+    if (window.location.hash === '#mensagens') {
+      trocarAba('mensagens', document.querySelectorAll('.aba-btn')[1]);
+    }
+  </script>
+
+</body>
+</html>

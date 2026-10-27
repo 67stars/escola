@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunidade – AdotZ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Adot<span>Z</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li><a href="adocao">Adoção</a></li>
+        <li><a href="comunidade" class="ativo">Comunidade</a></li>
+        <li><a href="doar">Doação</a></li>
+        <li><a href="suporte">Suporte</a></li>
+      </ul>
+      <a href="perfil" class="nav-perfil-icon" title="Meu Perfil">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <section class="secao">
+    <h2 class="secao-titulo">Comunidade</h2>
+    <p class="secao-sub">Compartilhe histórias, fotos e dicas sobre seus pets adotados!</p>
+    <div class="linha-verde"></div>
+
+    <!-- AVISO DE VERIFICAÇÃO -->
+    <div class="comunidade-aviso">
+      🔒 <strong>Verificação ativa:</strong> Todos os perfis de ONGs e protetores são verificados pela equipe AdotZ. Fique tranquilo ao interagir na nossa comunidade!
+    </div>
+
+    <!-- CRIAR POST -->
+    <div class="form-contato" style="margin-bottom:2rem;">
+      <h3 style="color:var(--verde);margin-bottom:1rem;">Compartilhar na comunidade</h3>
+      <div class="form-grupo">
+        <label for="post-texto">O que você quer compartilhar?</label>
+        <textarea id="post-texto" rows="3" placeholder="Conta uma história, faça uma pergunta ou compartilhe uma dica sobre adoção! 🐾"></textarea>
+      </div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <label style="cursor:pointer;color:var(--verde);font-weight:600;font-size:0.9rem;">
+          📷 Adicionar foto
+          <input type="file" accept="image/*" style="display:none;" onchange="previewFoto(this)">
+        </label>
+        <div id="foto-preview" style="display:none;"></div>
+        <button class="btn btn-primario" style="margin-left:auto;" onclick="publicarPost()">Publicar 🐾</button>
+      </div>
+    </div>
+
+    <!-- FEED DE POSTS -->
+    <div id="feed">
+
+      <div class="post-card fade-in">
+        <div class="post-header">
+          <div class="post-avatar">🐶</div>
+          <div>
+            <div class="post-user">Família Santos <span class="post-verificado">✓ adotante</span></div>
+            <div class="post-data">há 2 horas</div>
+          </div>
+        </div>
+        <p class="post-texto">Apresentamos o Max! Adotamos ele pelo AdotZ há 3 meses e ele já virou o dono da casa 😂 Nunca imaginei que um cachorro pudesse mudar tanto a nossa rotina para melhor. Acordamos mais cedo, caminhamos mais e sorrimos o tempo todo. Gratidão!</p>
+        <div class="post-foto-placeholder">🐕 📸</div>
+        <div class="post-acoes">
+          <button class="post-acao" onclick="curtir(this)">❤️ <span>24</span> Curtir</button>
+          <button class="post-acao">💬 8 Comentários</button>
+          <button class="post-acao">↗️ Compartilhar</button>
+        </div>
+      </div>
+
+      <div class="post-card fade-in fade-in-2">
+        <div class="post-header">
+          <div class="post-avatar">🏠</div>
+          <div>
+            <div class="post-user">ONG Amigos dos Animais <span class="post-verificado">✓ ONG</span></div>
+            <div class="post-data">há 5 horas</div>
+          </div>
+        </div>
+        <p class="post-texto">🚨 URGENTE: Temos 3 filhotes de Labrador para adoção responsável! São filhotes resgatados de uma situação de maus-tratos, já estão recuperados, vacinados e cheios de energia. Entre em contato pelo formulário ou mande mensagem aqui! 🐾</p>
+        <div class="post-acoes">
+          <button class="post-acao" onclick="curtir(this)">❤️ <span>67</span> Curtir</button>
+          <button class="post-acao">💬 31 Comentários</button>
+          <button class="post-acao">↗️ Compartilhar</button>
+        </div>
+      </div>
+
+      <div class="post-card fade-in fade-in-3">
+        <div class="post-header">
+          <div class="post-avatar">🐱</div>
+          <div>
+            <div class="post-user">Maria Clara <span class="post-verificado">✓ adotante</span></div>
+            <div class="post-data">há 1 dia</div>
+          </div>
+        </div>
+        <p class="post-texto">Dica para quem está pensando em adotar um gato: prepare o ambiente antes! Esconderijos, arranhadores e caixinhas fazem toda a diferença na adaptação. A minha Mia levou 2 semanas para sair do quarto, mas agora não me larga! 🐱❤️</p>
+        <div class="post-foto-placeholder">🐈 🏠</div>
+        <div class="post-acoes">
+          <button class="post-acao" onclick="curtir(this)">❤️ <span>42</span> Curtir</button>
+          <button class="post-acao">💬 15 Comentários</button>
+          <button class="post-acao">↗️ Compartilhar</button>
+        </div>
+      </div>
+
+      <div class="post-card fade-in fade-in-4">
+        <div class="post-header">
+          <div class="post-avatar">🌿</div>
+          <div>
+            <div class="post-user">Instituto Pet Brasil <span class="post-verificado">✓ ONG</span></div>
+            <div class="post-data">há 2 dias</div>
+          </div>
+        </div>
+        <p class="post-texto">📊 Prestação de contas de maio: graças às doações recebidas pelo AdotZ, realizamos 47 castrações gratuitas, vacinamos 130 animais e intermediamos 23 adoções! Obrigado a todos que apoiam nossa causa! 💚</p>
+        <div class="post-acoes">
+          <button class="post-acao" onclick="curtir(this)">❤️ <span>115</span> Curtir</button>
+          <button class="post-acao">💬 22 Comentários</button>
+          <button class="post-acao">↗️ Compartilhar</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Adot<span>Z</span></div>
+          <p class="footer-desc">Conectando animais a lares cheios de amor. Um projeto do CEFET-MG.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="/">Início</a>
+          <a href="adocao">Adoção</a>
+          <a href="comunidade">Comunidade</a>
+          <a href="doar">Doação</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="index.html#quemsomos">Quem somos</a>
+          <a href="suporte">Contato</a>
+          <a href="suporte">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AdotZ · CEFET-MG · Feito com 🐾 por Miguel, Rui e Lucas
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function curtir(btn) {
+      const span = btn.querySelector('span');
+      let n = parseInt(span.textContent);
+      span.textContent = n + 1;
+      btn.style.color = 'var(--vermelho)';
+    }
+
+    function publicarPost() {
+      const texto = document.getElementById('post-texto').value.trim();
+      if (!texto) { alert('Escreva algo antes de publicar!'); return; }
+      const feed = document.getElementById('feed');
+      const novo = document.createElement('div');
+      novo.className = 'post-card fade-in';
+      novo.innerHTML = `
+        <div class="post-header">
+          <div class="post-avatar">😊</div>
+          <div>
+            <div class="post-user">Você</div>
+            <div class="post-data">agora</div>
+          </div>
+        </div>
+        <p class="post-texto">${texto}</p>
+        <div class="post-acoes">
+          <button class="post-acao" onclick="curtir(this)">❤️ <span>0</span> Curtir</button>
+          <button class="post-acao">💬 0 Comentários</button>
+          <button class="post-acao">↗️ Compartilhar</button>
+        </div>
+      `;
+      feed.insertBefore(novo, feed.firstChild);
+      document.getElementById('post-texto').value = '';
+    }
+  </script>
+
+</body>
+</html>
